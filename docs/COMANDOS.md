@@ -25,3 +25,7 @@ git push -u origin develop
 git flow init
 
 ### Para crear una nueva feature
+git flow feature start nombre_de_la_feature
+
+### para finalizar la feature
+git flow feature finish nombre_de_la_feature
