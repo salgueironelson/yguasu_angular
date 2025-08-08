@@ -4,6 +4,9 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptorInterceptor } from './core/interceptors/auth-interceptor-interceptor';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptorInterceptor])),
-
+    provideAnimationsAsync(),
+    providePrimeNG({ theme: { preset: Aura, options: { darkModeSelector: '.app-dark' } } })
   ]
 };

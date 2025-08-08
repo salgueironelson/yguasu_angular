@@ -6,6 +6,7 @@ import { Bajas } from './web/bajas/bajas';
 import { Altas } from './web/altas/altas';
 import { Error404 } from './errors/error404/error404';
 import { WebLayout } from './layout/web-layout/web-layout';
+import { AppLayout } from './layout/component/app.layout';
 
 export const routes: Routes = [
     {
@@ -40,7 +41,14 @@ export const routes: Routes = [
     },
     {
         path: 'admin',
-        loadChildren: () => import('./admin/admin-module').then(m => m.AdminModule)
+        component: AppLayout,
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./admin/admin-module').then(m => m.AdminModule)
+            }
+        ]
+        
     },
     {
         path: '**',
